@@ -4,19 +4,28 @@
 
 :root {
   /* colors */
-  --color-alpha-light: MEDIUMSLATEBLUE;
-  --color-alpha: SLATEBLUE;
+  --color-alpha-10-light: #f0f0f7;
+  --color-alpha-light: #f2f2f9;
+  --color-alpha: #a5a4bf;
+  --color-alpha-dark: #4c4b68;
+  --color-alpha-10-dark: #3b3b53;
 
-  --color-neutral-light: LIGHTSLATEGRAY;
-  --color-neutral: SLATEGRAY;
-  --color-neutral-dark: DARKSLATEGRAY;
+  --color-neutral-light: #ffffff;
+  /* --color-neutral: SLATEGRAY; */
+  --color-neutral-dark: #4d4f5c;
 
   /* Shadows */
+  --shadow-neutral: 0 2px 6px rgba(0, 0, 0, 0.04);
 
   /* border radius */
 
   /* transitions */
   --transition-alpha: 0.1s;
+
+  /* grid system */
+  --global-baseline: 5px;
+  --layout-sidebar-width: 260px;
+  --layout-header-height: 70px;
 }
 
 /*------------------------------------*\
@@ -37,7 +46,7 @@ html {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: white;
+  background-color: var(--color-alpha-10-light);
 }
 
 *,
@@ -286,10 +295,43 @@ input::placeholder {
 \*------------------------------------*/
 
 /*
+    Component: app
+    ---
+    Website app
+*/
+
+.c-app {
+  min-height: 100vh;
+}
+
+.c-app__topbar {
+  background-color: var(--color-neutral-light);
+  box-shadow: var(--shadow-neutral);
+}
+
+.c-app__sidebar {
+  background-color: var(--color-neutral-dark);
+}
+
+.c-app__main {
+}
+
+@media screen and (min-width: 960px) {
+  .c-app {
+    display: grid;
+    grid-template-columns: var(--layout-sidebar-width) 1fr;
+    grid-template-rows: var(--layout-header-height) 1fr;
+  }
+}
+
+/*
     Component: Logo
     ---
     Website main logo
 */
+.c-app__logo {
+  background: var(--color-alpha-10-dark);
+}
 
 /*------------------------------------*\
 #UTILITIES
